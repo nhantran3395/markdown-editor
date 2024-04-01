@@ -3,119 +3,170 @@
 @tailwind utilities;
 
 @layer base {
-    @font-face {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 300;
-        src: url("../../public/fonts/Roboto/Roboto-Light.ttf") format('truetype');
-    }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: url("../../public/fonts/Roboto/Roboto-Light.ttf") format('truetype');
+  }
 
-    @font-face {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 400;
-        src: url("../../public/fonts/Roboto/Roboto-Regular.ttf") format('truetype');
-    }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../../public/fonts/Roboto/Roboto-Regular.ttf") format('truetype');
+  }
 
-    @font-face {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 500;
-        src: url("../../public/fonts/Roboto/Roboto-Medium.ttf") format('truetype');
-    }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    src: url("../../public/fonts/Roboto/Roboto-Medium.ttf") format('truetype');
+  }
 
-    @font-face {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        src: url("../../public/fonts/Roboto/Roboto-Bold.ttf") format('truetype');
-    }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: url("../../public/fonts/Roboto/Roboto-Bold.ttf") format('truetype');
+  }
 
-    @font-face {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 300;
-        src: url("../../public/fonts/Roboto_Mono/static/RobotoMono-Light.ttf") format('truetype');
-    }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: url("../../public/fonts/Roboto_Mono/static/RobotoMono-Light.ttf") format('truetype');
+  }
 
-    @font-face {
-        font-family: 'Roboto Mono';
-        font-style: normal;
-        font-weight: 400;
-        src: url("../../public/fonts/Roboto_Mono/static/RobotoMono-Regular.ttf") format('truetype');
-    }
+  @font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../../public/fonts/Roboto_Mono/static/RobotoMono-Regular.ttf") format('truetype');
+  }
 
-    @font-face {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        src: url("../../public/fonts/Roboto_Mono/static/RobotoMono-Bold.ttf") format('truetype');
-    }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: url("../../public/fonts/Roboto_Mono/static/RobotoMono-Bold.ttf") format('truetype');
+  }
 
-    @font-face {
-        font-family: 'Roboto Slab';
-        font-style: normal;
-        font-weight: 300;
-        src: url("../../public/fonts/Roboto_Slab/static/RobotoSlab-Light.ttf") format('truetype');
-    }
+  @font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 300;
+    src: url("../../public/fonts/Roboto_Slab/static/RobotoSlab-Light.ttf") format('truetype');
+  }
 
-    @font-face {
-        font-family: 'Roboto Slab';
-        font-style: normal;
-        font-weight: 400;
-        src: url("../../public/fonts/Roboto_Slab/static/RobotoSlab-Regular.ttf") format('truetype');
-    }
+  @font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../../public/fonts/Roboto_Slab/static/RobotoSlab-Regular.ttf") format('truetype');
+  }
 
-    @font-face {
-        font-family: 'Roboto Slab';
-        font-style: normal;
-        font-weight: 700;
-        src: url("../../public/fonts/Roboto_Slab/static/RobotoSlab-Bold.ttf") format('truetype');
-    }
+  @font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 700;
+    src: url("../../public/fonts/Roboto_Slab/static/RobotoSlab-Bold.ttf") format('truetype');
+  }
+
+  :root {
+    --color-white: 0 0% 100%;
+    --color-gray-100: 0 0% 96%;
+    --color-gray-200: 0 0% 90%;
+    --color-gray-300: 222 9% 78%;
+    --color-gray-400: 216 4% 51%;
+    --color-gray-500: 216 8% 38%;
+    --color-gray-600: 216 9% 23%;
+    --color-gray-700: 220 7% 18%;
+    --color-gray-800: 216 8% 12%;
+    --color-gray-900: 225 9% 9%;
+    --color-orange-300: 21 86% 68%;
+    --color-orange-600: 13 75% 58%;
+
+    --background: var(--color-white);
+    --foreground: var(--color-gray-700);
+
+    --primary: var(--color-orange-600);
+    --primary-hover: var(--color-orange-300);
+    --primary-foreground: var(--color-white);
+
+    --accent: var(--color-orange-600);
+    --accent-foreground: var(--color-gray-500);
+
+    /*--border: 214.3 31.8% 91.4%;*/
+    /*--input: 214.3 31.8% 91.4%;*/
+    /*--ring: 222.2 84% 4.9%;*/
+  }
+
+  .dark {
+    --background: var(--color-gray-700);
+    --foreground: var(--color-gray-300);
+
+    --primary: var(--color-orange-600);
+    --primary-hover: var(--color-orange-300);
+    --primary-foreground: var(--color-white);
+
+    --accent: var(--color-orange-600);
+    --accent-foreground: var(--color-gray-500);
+
+    /*--border: 217.2 32.6% 17.5%;*/
+    /*--input: 217.2 32.6% 17.5%;*/
+    /*--ring: 212.7 26.8% 83.9%;*/
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 @layer components {
-    .text-body {
-        @apply font-sans font-light text-xs;
-    }
+  .text-body {
+    @apply font-sans font-light text-xs;
+  }
 
-    .text-heading-s {
-        @apply font-sans font-medium tracking-[2px] text-sm;
-    }
+  .text-heading-s {
+    @apply font-sans font-medium tracking-[2px] text-sm;
+  }
 
-    .text-heading-m {
-        @apply font-sans font-bold text-md;
-    }
+  .text-heading-m {
+    @apply font-sans font-bold text-md;
+  }
 
-    .text-preview-heading-sm {
-        @apply font-slab font-bold text-sm;
-    }
+  .text-preview-heading-sm {
+    @apply font-slab font-bold text-sm;
+  }
 
-    .text-preview-heading-lg {
-        @apply font-slab font-bold text-lg;
-    }
+  .text-preview-heading-lg {
+    @apply font-slab font-bold text-lg;
+  }
 
-    .text-preview-heading-xl {
-        @apply font-slab font-bold text-xl;
-    }
+  .text-preview-heading-xl {
+    @apply font-slab font-bold text-xl;
+  }
 
-    .text-preview-heading-2xl {
-        @apply font-slab font-bold text-2xl;
-    }
+  .text-preview-heading-2xl {
+    @apply font-slab font-bold text-2xl;
+  }
 
-    .text-preview-heading-3xl {
-        @apply font-slab font-light text-3xl;
-    }
+  .text-preview-heading-3xl {
+    @apply font-slab font-light text-3xl;
+  }
 
-    .text-preview-heading-4xl {
-        @apply font-slab font-bold text-4xl;
-    }
+  .text-preview-heading-4xl {
+    @apply font-slab font-bold text-4xl;
+  }
 
-    .text-preview-body {
-        @apply font-slab text-sm leading-6;
-    }
+  .text-preview-body {
+    @apply font-slab text-sm leading-6;
+  }
 
-    .text-markup-body {
-        @apply font-mono text-sm leading-6;
-    }
+  .text-markup-body {
+    @apply font-mono text-sm leading-6;
+  }
 }
