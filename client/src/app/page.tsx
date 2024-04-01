@@ -2,6 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerClose,
+  Drawer,
+} from "@/components/ui/drawer";
 
 export default function Home() {
   return (
@@ -40,6 +48,22 @@ export default function Home() {
       <div>
         <Label htmlFor={"documentName"}>Document Name</Label>
         <Input id={"documentName"} type={"text"} />
+      </div>
+      <div>
+        <Drawer>
+          <DrawerTrigger>Open</DrawerTrigger>
+          <DrawerContent>
+            <DrawerHeader>
+              <h1 className={"text-heading-m"}>Are you absolutely sure?</h1>
+              <p className={"text-body"}>This action cannot be undone.</p>
+            </DrawerHeader>
+            <DrawerFooter>
+              <DrawerClose>
+                <Button>Cancel</Button>
+              </DrawerClose>
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
       </div>
     </main>
   );
