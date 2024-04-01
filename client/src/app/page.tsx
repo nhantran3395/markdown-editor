@@ -10,6 +10,13 @@ import {
   DrawerClose,
   Drawer,
 } from "@/components/ui/drawer";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Home() {
   return (
@@ -51,7 +58,7 @@ export default function Home() {
       </div>
       <div>
         <Drawer>
-          <DrawerTrigger>Open</DrawerTrigger>
+          <DrawerTrigger>Open Drawer</DrawerTrigger>
           <DrawerContent>
             <DrawerHeader>
               <h1 className={"text-heading-m"}>Are you absolutely sure?</h1>
@@ -64,6 +71,25 @@ export default function Home() {
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
+      </div>
+      <div>
+        <Dialog>
+          <DialogTrigger>Open Dialog</DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <h1 className={"text-preview-heading-2xl"}>
+                Are you absolutely sure?
+              </h1>
+              <p className={"text-gray-500 text-preview-body"}>
+                This action cannot be undone. This will permanently delete your
+                account and remove your data from our servers.
+              </p>
+            </DialogHeader>
+            <DialogFooter>
+              <Button className={"w-full"}>Confirm & Delete</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </main>
   );
