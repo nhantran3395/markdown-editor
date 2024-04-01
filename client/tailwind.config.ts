@@ -59,6 +59,7 @@ const config = {
         DEFAULT: "hsl(var(--accent))",
         foreground: "hsl(var(--accent-foreground))",
       },
+      input: "hsl(var(--input))",
     },
     fontFamily: {
       sans: ["Roboto", "sans-serif"],
@@ -68,7 +69,6 @@ const config = {
     extend: {
       // colors: {
       //   border: "hsl(var(--border))",
-      //   input: "hsl(var(--input))",
       //   ring: "hsl(var(--ring))",
       // },
       // borderRadius: {

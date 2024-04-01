@@ -97,8 +97,9 @@
     --accent: var(--color-orange-600);
     --accent-foreground: var(--color-gray-500);
 
+    --input: var(--color-gray-500);
+
     /*--border: 214.3 31.8% 91.4%;*/
-    /*--input: 214.3 31.8% 91.4%;*/
     /*--ring: 222.2 84% 4.9%;*/
   }
 
@@ -113,8 +114,9 @@
     --accent: var(--color-orange-600);
     --accent-foreground: var(--color-gray-500);
 
+    --input: var(--color-gray-500);
+
     /*--border: 217.2 32.6% 17.5%;*/
-    /*--input: 217.2 32.6% 17.5%;*/
     /*--ring: 212.7 26.8% 83.9%;*/
   }
 }
@@ -135,7 +137,7 @@
   }
 
   .text-heading-m {
-    @apply font-sans font-bold text-md;
+    @apply font-sans font-normal text-md;
   }
 
   .text-preview-heading-sm {

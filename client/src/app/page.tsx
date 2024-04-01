@@ -1,4 +1,7 @@
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function Home() {
   return (
@@ -33,6 +36,11 @@ export default function Home() {
       <Button variant={"ghost"} size={"icon"}>
         +
       </Button>
+      <Switch />
+      <div>
+        <Label htmlFor={"documentName"}>Document Name</Label>
+        <Input id={"documentName"} type={"text"} />
+      </div>
     </main>
   );
 }
