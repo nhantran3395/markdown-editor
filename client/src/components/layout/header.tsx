@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { MenuSidebar } from "./menu-sidebar";
+import { DeleteIconWithDialog } from "./delete-icon-with-dialog";
 
 export function Header() {
   return (
@@ -31,14 +32,7 @@ export function Header() {
         </div>
       </div>
       <div className={"flex gap-x-6 m-2 sm:m-4 items-center"}>
-        <Button variant={"ghost"} size={"icon"}>
-          <Image
-            src={"icon-delete.svg"}
-            alt={"Delete"}
-            width={18}
-            height={20}
-          />
-        </Button>
+        <DeleteIconWithDialog />
         <Button className={"flex gap-x-2"}>
           <Image src={"icon-save.svg"} alt={"Save"} width={16} height={16} />
           <span className={"max-sm:hidden"}>Save Changes</span>
