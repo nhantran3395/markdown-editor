@@ -5,8 +5,6 @@ import { Label } from "@/components/ui/label";
 import {
   DrawerTrigger,
   DrawerContent,
-  DrawerHeader,
-  DrawerFooter,
   DrawerClose,
   Drawer,
 } from "@/components/ui/drawer";
@@ -60,15 +58,11 @@ export default function Home() {
         <Drawer>
           <DrawerTrigger>Open Drawer</DrawerTrigger>
           <DrawerContent>
-            <DrawerHeader>
-              <h1 className={"text-heading-m"}>Are you absolutely sure?</h1>
-              <p className={"text-body"}>This action cannot be undone.</p>
-            </DrawerHeader>
-            <DrawerFooter>
-              <DrawerClose>
-                <Button>Cancel</Button>
-              </DrawerClose>
-            </DrawerFooter>
+            <h1 className={"text-heading-m"}>Are you absolutely sure?</h1>
+            <p className={"text-body"}>This action cannot be undone.</p>
+            <DrawerClose>
+              <Button>Cancel</Button>
+            </DrawerClose>
           </DrawerContent>
         </Drawer>
       </div>
