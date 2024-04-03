@@ -1,23 +1,14 @@
-import Image from "next/image";
-
 import { Switch } from "@/components/ui/switch";
+
+import DarkModeIcon from "@/assets/icons/icon-dark-mode.svg";
+import LightModeIcon from "@/assets/icons/icon-light-mode.svg";
 
 export function ModeToggle() {
   return (
     <div className={"flex items-center gap-x-3"}>
-      <Image
-        src={"icon-dark-mode.svg"}
-        alt="Dark mode"
-        width={16}
-        height={16}
-      />
+      <DarkModeIcon />
       <Switch />
-      <Image
-        src={"icon-light-mode.svg"}
-        alt="Light mode"
-        width={16}
-        height={16}
-      />
+      <LightModeIcon />
     </div>
   );
 }

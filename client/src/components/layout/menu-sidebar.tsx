@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
@@ -10,6 +8,10 @@ import {
 } from "@/components/ui/drawer";
 import { ModeToggle } from "@/components/layout/mode-toggle";
 
+import MenuIcon from "@/assets/icons/icon-menu.svg";
+import Logo from "@/assets/icons/logo.svg";
+import CloseIcon from "@/assets/icons/icon-close.svg";
+
 export function MenuSidebar() {
   return (
     <Drawer>
@@ -18,14 +20,10 @@ export function MenuSidebar() {
           "bg-gray-600 hover:bg-gray-600 rounded-none h-14 w-14 sm:h-[72px] sm:w-[72px] justify-center inline-flex items-center"
         }
       >
-        <div className={"h-[14px] w-[23px] sm:h-[18px] sm:w-[30px] relative"}>
-          <Image src={"icon-menu.svg"} alt={"Menu"} fill={true} />
-        </div>
+        <MenuIcon />
       </DrawerTrigger>
       <DrawerContent className="w-[250px] px-6 py-7">
-        <div className={"w-[130px] h-[12px] relative"}>
-          <Image src={"logo.svg"} alt={"Markdown"} fill={true} />
-        </div>
+        <Logo />
         <div className={"mt-7"}>
           <h1 className={"text-heading-s"}>MY DOCUMENTS</h1>
           <Button className={"mt-7 mb-6"}>+ New Document</Button>
@@ -51,11 +49,7 @@ export function MenuSidebar() {
               "bg-gray-600 hover:bg-gray-600 rounded-none h-14 w-14 sm:h-[72px] sm:w-[72px] justify-center inline-flex items-center absolute top-0 left-[100%]"
             }
           >
-            <div
-              className={"h-[18px] w-[18px] sm:h-[23px] sm:w-[23px] relative"}
-            >
-              <Image src={"icon-close.svg"} alt={"Close"} fill={true} />
-            </div>
+            <CloseIcon />
           </div>
         </DrawerClose>
       </DrawerContent>
