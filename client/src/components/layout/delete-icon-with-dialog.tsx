@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import {
   Dialog,
   DialogContent,
@@ -9,11 +7,13 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
+import DeleteIcon from "@/assets/icons/icon-delete.svg";
+
 export function DeleteIconWithDialog() {
   return (
     <Dialog>
       <DialogTrigger>
-        <Image src={"icon-delete.svg"} alt={"Delete"} width={18} height={20} />
+        <DeleteIcon className={"fill-gray-400 hover:fill-orange-600"} />
       </DialogTrigger>
       <DialogContent className="w-[343px]">
         <DialogHeader className={"text-left"}>
