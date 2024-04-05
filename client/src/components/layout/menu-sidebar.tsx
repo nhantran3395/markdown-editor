@@ -7,12 +7,17 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { ModeToggle } from "@/components/layout/mode-toggle";
+import { type Mode } from "@/lib/utils";
 
 import MenuIcon from "@/assets/icons/icon-menu.svg";
 import Logo from "@/assets/icons/logo.svg";
 import CloseIcon from "@/assets/icons/icon-close.svg";
 
-export function MenuSidebar() {
+type MenuSidebarProps = {
+  initialMode: Mode;
+};
+
+export function MenuSidebar({ initialMode }: MenuSidebarProps) {
   return (
     <Drawer>
       <DrawerTrigger
@@ -41,7 +46,7 @@ export function MenuSidebar() {
           </ul>
         </div>
         <div className={"mt-auto"}>
-          <ModeToggle />
+          <ModeToggle initialMode={initialMode} />
         </div>
         <DrawerClose>
           <div

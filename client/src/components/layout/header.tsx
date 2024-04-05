@@ -1,17 +1,22 @@
+import { cookies } from "next/headers";
+
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { MenuSidebar } from "./menu-sidebar";
 import { DeleteIconWithDialog } from "./delete-icon-with-dialog";
+import { getInitialModeFromCookies } from "@/lib/utils";
 
 import Logo from "@/assets/icons/logo.svg";
 import DocumentIcon from "@/assets/icons/icon-document.svg";
 import SaveIcon from "@/assets/icons/icon-save.svg";
 
 export function Header() {
+  const initialMode = getInitialModeFromCookies(cookies());
+
   return (
     <nav className={"bg-gray-700 flex items-center justify-between"}>
       <div className="flex gap-x-6 items-center">
-        <MenuSidebar />
+        <MenuSidebar initialMode={initialMode} />
         <Logo className={"max-md:hidden"} />
         <div
           className={"max-md:hidden border-l-[1px] h-[40px] border-l-gray-500"}
