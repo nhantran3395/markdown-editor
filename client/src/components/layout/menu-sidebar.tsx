@@ -17,7 +17,7 @@ type MenuSidebarProps = {
   initialMode: Mode;
 };
 
-export function MenuSidebar({ initialMode }: MenuSidebarProps) {
+export function MenuSidebar({ initialMode }: Readonly<MenuSidebarProps>) {
   return (
     <Drawer>
       <DrawerTrigger

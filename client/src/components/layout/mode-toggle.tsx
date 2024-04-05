@@ -12,7 +12,7 @@ type ModeToggleProps = {
   initialMode: Mode;
 };
 
-export function ModeToggle({ initialMode }: ModeToggleProps) {
+export function ModeToggle({ initialMode }: Readonly<ModeToggleProps>) {
   const [mode, setMode] = useState<"light" | "dark">(initialMode);
 
   function onToggle() {
