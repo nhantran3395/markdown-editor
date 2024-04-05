@@ -7,7 +7,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { ModeToggle } from "@/components/layout/mode-toggle";
-import { type Mode } from "@/lib/utils";
+import { type Mode } from "@/types/mode";
 
 import MenuIcon from "@/assets/icons/icon-menu.svg";
 import Logo from "@/assets/icons/logo.svg";

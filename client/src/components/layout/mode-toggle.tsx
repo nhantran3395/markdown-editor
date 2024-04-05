@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import Cookie from "js-cookie";
 
 import { Switch } from "@/components/ui/switch";
-import { type Mode } from "@/lib/utils";
+import { cookies } from "@/lib/cookies-helper";
+import { type Mode } from "@/types/mode";
 
 import DarkModeIcon from "@/assets/icons/icon-dark-mode.svg";
 import LightModeIcon from "@/assets/icons/icon-light-mode.svg";
@@ -18,7 +18,7 @@ export function ModeToggle({ initialMode }: ModeToggleProps) {
   function onToggle() {
     const next = mode === "light" ? "dark" : "light";
     setMode(next);
-    Cookie.set("mode", next);
+    cookies.setMode(next);
   }
 
   useEffect(() => {

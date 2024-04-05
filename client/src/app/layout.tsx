@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
+import { cookies as NextCookies } from "next/headers";
 
 import { Header } from "@/components/layout/header";
-import { getInitialModeFromCookies } from "@/lib/utils";
+import { cookies } from "@/lib/cookies-helper";
 
 import "./globals.css";
 
@@ -16,7 +16,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialMode = getInitialModeFromCookies(cookies());
+  // initialize cookies with instance of ReadOnlyRequestCookies
+  cookies.initialize(NextCookies());
+  const initialMode = cookies.getMode();
 
   return (
     <html lang="en">
