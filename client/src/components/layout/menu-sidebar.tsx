@@ -24,6 +24,7 @@ export function MenuSidebar({ initialMode }: Readonly<MenuSidebarProps>) {
         className={
           "bg-gray-600 hover:bg-gray-600 rounded-none h-14 w-14 sm:h-[72px] sm:w-[72px] justify-center inline-flex items-center"
         }
+        data-testid={"menu-sidebar-trigger"}
       >
         <MenuIcon />
       </DrawerTrigger>
@@ -53,6 +54,7 @@ export function MenuSidebar({ initialMode }: Readonly<MenuSidebarProps>) {
             className={
               "bg-gray-600 hover:bg-gray-600 rounded-none h-14 w-14 sm:h-[72px] sm:w-[72px] justify-center inline-flex items-center absolute top-0 left-[100%]"
             }
+            data-testid={"menu-sidebar-close"}
           >
             <CloseIcon />
           </div>

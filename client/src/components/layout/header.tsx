@@ -26,7 +26,9 @@ export function Header() {
             <Label className={"text-body text-gray-400 max-sm:hidden"}>
               Document Name
             </Label>
-            <Label className={"text-white"}>Welcome.md</Label>
+            <Label className={"text-white"} data-testid={"document-name"}>
+              Welcome.md
+            </Label>
           </div>
         </div>
       </div>
