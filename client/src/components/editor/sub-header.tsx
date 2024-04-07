@@ -12,6 +12,8 @@ export function SubHeader({
   fullPreview,
   onToggleFullPreview,
 }: Readonly<SubHeaderProps>) {
+  const PreviewIcon = fullPreview ? HidePreviewIcon : ShowPreviewIcon;
+
   return (
     <header className="w-full bg-gray-100 flex relative">
       {fullPreview ? null : (
@@ -34,17 +36,11 @@ export function SubHeader({
       >
         <h2 className={"text-gray-400 text-heading-s"}>PREVIEW</h2>
       </div>
-      {fullPreview ? (
-        <HidePreviewIcon
-          className={"absolute right-4 top-4"}
-          onClick={onToggleFullPreview}
-        />
-      ) : (
-        <ShowPreviewIcon
-          className={"absolute right-4 top-4"}
-          onClick={onToggleFullPreview}
-        />
-      )}
+      <PreviewIcon
+        className={"cursor-pointer absolute right-4 top-4"}
+        onClick={onToggleFullPreview}
+        data-testid={"pane-toggle"}
+      />
     </header>
   );
 }

@@ -4,7 +4,7 @@ type PreviewPaneProps = {
   body: string;
 };
 
-export function PreviewPane({ body }: PreviewPaneProps) {
+export function PreviewPane({ body }: Readonly<PreviewPaneProps>) {
   return (
     <article className={"text-preview-body"}>
       <Markdown>{body}</Markdown>
