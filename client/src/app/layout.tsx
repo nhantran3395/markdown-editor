@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { cookies as NextCookies } from "next/headers";
+import { clsx } from "clsx";
 
 import { Header } from "@/components/layout/header";
 import { cookies } from "@/lib/cookies-helper";
@@ -23,7 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`min-h-dvh max-h-dvh flex flex-col ${initialMode === "dark" ? "dark" : ""}`}
+        className={clsx(
+          "min-h-dvh max-h-dvh flex flex-col",
+          initialMode === "dark" && "dark",
+        )}
       >
         <Header />
         <main className={"flex-1 flex flex-col overflow-auto"}>{children}</main>

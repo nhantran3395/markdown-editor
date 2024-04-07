@@ -32,7 +32,12 @@ export function ModeToggle({ initialMode }: Readonly<ModeToggleProps>) {
   return (
     <div className={"flex items-center gap-x-3"}>
       <DarkModeIcon />
-      <Switch checked={mode === "light"} onClick={onToggle} value={mode} />
+      <Switch
+        checked={mode === "light"}
+        onClick={onToggle}
+        value={mode}
+        data-testid={"mode-switch"}
+      />
       <LightModeIcon />
     </div>
   );
