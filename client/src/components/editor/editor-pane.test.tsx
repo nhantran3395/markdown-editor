@@ -38,7 +38,7 @@ describe("EditorPane", () => {
       screen.getByRole("heading", { name: /markdown/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /preview/i }),
+      screen.getByRole("heading", { name: /reviewed/i }),
     ).toBeInTheDocument();
   });
 });
