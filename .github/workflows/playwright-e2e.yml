@@ -37,6 +37,7 @@ jobs:
       - name: Upload HTML report to AWS S3 Bucket
         shell: bash
         run: |
-          REPORT_DIR='run-${{ github.run_id }}-${{ github.run_attempt }}'
+          AWS_REGION='${{ secrets.AWS_E2E_REPORT_BUCKET_REGION }}'
+          REPORT_DIR='${{ github.head_ref || github.ref_name }}-${{ github.run_id }}-${{ github.run_attempt }}'
           aws s3 cp ./playwright-report/index.html "s3://markdown-editor-playwright-e2e-test-report/$REPORT_DIR/index.html"
-          echo "report uploaded to S3: https://markdown-editor-playwright-e2e-test-report.s3.ap-southeast-2.amazonaws.com/$REPORT_DIR/index.html"
+          echo "report uploaded to S3: https://markdown-editor-playwright-e2e-test-report.s3.$AWS_REGION.amazonaws.com/$REPORT_DIR/index.html"
