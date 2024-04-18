@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("landing", () => {
+test.describe("landing page", () => {
   test("sees 'Markdown editor' as page title", async ({ page }) => {
     await page.goto("/");
 
