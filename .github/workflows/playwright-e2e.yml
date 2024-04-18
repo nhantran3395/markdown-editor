@@ -7,13 +7,15 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./e2e
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Change Directory to e2e
-        run: cd e2e
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
