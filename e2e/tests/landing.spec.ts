@@ -8,7 +8,7 @@ test.describe("landing page", () => {
     await expect(page).toHaveTitle(/Markdown editor/i);
   });
 
-  test("sees 'Welcome.md' by default", async ({ page }) => {
+  test("sees 'Welcome.md' as default document", async ({ page }) => {
     await page.goto("/");
 
     await expect(page.getByTestId("document-name")).toBeVisible();
