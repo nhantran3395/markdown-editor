@@ -4,5 +4,10 @@ import com.nhantran.markdowneditor.documentservice.application.port.in.DeleteDoc
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DeleteDocumentController implements DeleteDocumentUseCase {
+public class DeleteDocumentController {
+    private final DeleteDocumentUseCase deleteDocumentUseCase;
+
+    public DeleteDocumentController(DeleteDocumentUseCase deleteDocumentUseCase) {
+        this.deleteDocumentUseCase = deleteDocumentUseCase;
+    }
 }

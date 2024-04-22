@@ -4,5 +4,10 @@ import com.nhantran.markdowneditor.documentservice.application.port.in.UpdateDoc
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UpdateDocumentController implements UpdateDocumentUseCase {
+public class UpdateDocumentController {
+    private final UpdateDocumentUseCase updateDocumentUseCase;
+
+    public UpdateDocumentController(UpdateDocumentUseCase updateDocumentUseCase) {
+        this.updateDocumentUseCase = updateDocumentUseCase;
+    }
 }

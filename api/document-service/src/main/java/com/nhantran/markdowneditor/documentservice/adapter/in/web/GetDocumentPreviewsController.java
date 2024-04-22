@@ -9,9 +9,14 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-public class GetDocumentPreviewsController implements GetDocumentPreviewsUseCase {
+public class GetDocumentPreviewsController {
+    private final GetDocumentPreviewsUseCase getDocumentPreviewsUseCase;
+
+    public GetDocumentPreviewsController(GetDocumentPreviewsUseCase getDocumentPreviewsUseCase) {
+        this.getDocumentPreviewsUseCase = getDocumentPreviewsUseCase;
+    }
+    
     @GetMapping("/documents")
-    @Override
     public List<DocumentPreview> getDocumentPreviews() {
         return Collections.emptyList();
     }

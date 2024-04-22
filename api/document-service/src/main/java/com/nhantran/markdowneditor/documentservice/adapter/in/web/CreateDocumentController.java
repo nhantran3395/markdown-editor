@@ -4,5 +4,10 @@ import com.nhantran.markdowneditor.documentservice.application.port.in.CreateDoc
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CreateDocumentController implements CreateDocumentUseCase {
+public class CreateDocumentController {
+    private final CreateDocumentUseCase createDocumentUseCase;
+
+    public CreateDocumentController(CreateDocumentUseCase createDocumentUseCase) {
+        this.createDocumentUseCase = createDocumentUseCase;
+    }
 }
