@@ -19,8 +19,10 @@ public class GetDocumentPreviewsService implements GetDocumentPreviewsUseCase {
     }
 
     @Override
-    public List<DocumentPreview> getDocumentPreviews() {
-        List<Document> documents = loadDocumentPort.loadDocuments();
+    public List<DocumentPreview> getDocumentPreviews(String title) {
+        List<Document> documents = title != null ?
+                loadDocumentPort.loadDocuments(title) :
+                loadDocumentPort.loadDocuments();
         return documents.stream().map(documentPreviewMapper::mapToDocumentPreview).toList();
     }
 }

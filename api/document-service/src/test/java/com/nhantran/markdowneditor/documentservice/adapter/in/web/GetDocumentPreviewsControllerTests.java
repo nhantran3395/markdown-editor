@@ -29,7 +29,7 @@ class GetDocumentPreviewsControllerTests {
     void returnsDocumentPreviews() throws Exception {
         Instant currentTime = Instant.now();
         DocumentPreview documentPreview = new DocumentPreview(1L, "default document", currentTime, currentTime);
-        given(getDocumentPreviewsUseCase.getDocumentPreviews()).willReturn(List.of(documentPreview));
+        given(getDocumentPreviewsUseCase.getDocumentPreviews(null)).willReturn(List.of(documentPreview));
 
         mockMvc.perform(
                         get("/documents/previews")
@@ -41,6 +41,43 @@ class GetDocumentPreviewsControllerTests {
                 .andExpect(jsonPath("$..modifiedDate").value(currentTime.toString()));
 
 
-        verify(getDocumentPreviewsUseCase).getDocumentPreviews();
+        verify(getDocumentPreviewsUseCase).getDocumentPreviews(null);
+    }
+
+    @Test
+    void givenDocumentExists_whenFindByTitle_thenReturnsDocumentPreviews() throws Exception {
+        Instant currentTime = Instant.now();
+        String searchTerm = "default";
+        DocumentPreview documentPreview = new DocumentPreview(1L, "default document", currentTime, currentTime);
+
+        given(getDocumentPreviewsUseCase.getDocumentPreviews(searchTerm)).willReturn(List.of(documentPreview));
+
+        mockMvc.perform(
+                        get("/documents/previews?title=" + searchTerm)
+                                .accept("application/json")
+                ).andExpect(status().isOk())
+                .andExpect(jsonPath("$..id").value(1))
+                .andExpect(jsonPath("$..title").value("default document"))
+                .andExpect(jsonPath("$..createdDate").value(currentTime.toString()))
+                .andExpect(jsonPath("$..modifiedDate").value(currentTime.toString()));
+
+
+        verify(getDocumentPreviewsUseCase).getDocumentPreviews(searchTerm);
+    }
+
+    @Test
+    void givenDocumentDoesNotExist_whenFindByTitle_thenReturnsEmptyList() throws Exception {
+        Instant currentTime = Instant.now();
+        String searchTerm = "markdown";
+        DocumentPreview documentPreview = new DocumentPreview(1L, "default document", currentTime, currentTime);
+
+        given(getDocumentPreviewsUseCase.getDocumentPreviews(searchTerm)).willReturn(List.of(documentPreview));
+
+        mockMvc.perform(
+                get("/documents/previews?title=" + searchTerm)
+                        .accept("application/json")
+        ).andExpect(status().isOk());
+
+        verify(getDocumentPreviewsUseCase).getDocumentPreviews(searchTerm);
     }
 }

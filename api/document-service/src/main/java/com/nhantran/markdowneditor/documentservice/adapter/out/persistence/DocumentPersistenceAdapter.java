@@ -4,6 +4,8 @@ import com.nhantran.markdowneditor.documentservice.application.domain.model.Docu
 import com.nhantran.markdowneditor.documentservice.application.port.out.CreateUpdateDeleteDocumentPort;
 import com.nhantran.markdowneditor.documentservice.application.port.out.LoadDocumentPort;
 import com.nhantran.markdowneditor.documentservice.common.PersistenceAdapter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +14,7 @@ import java.util.Optional;
 public class DocumentPersistenceAdapter implements LoadDocumentPort, CreateUpdateDeleteDocumentPort {
     private final DocumentRepository documentRepository;
     private final DocumentMapper documentMapper;
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     public DocumentPersistenceAdapter(
             DocumentRepository documentRepository,
@@ -24,6 +27,14 @@ public class DocumentPersistenceAdapter implements LoadDocumentPort, CreateUpdat
     @Override
     public List<Document> loadDocuments() {
         List<DocumentJpaEntity> documentJpaEntities = documentRepository.findAll();
+        logger.debug("Found {} documents", documentJpaEntities.size());
+        return documentJpaEntities.stream().map(documentMapper::mapToDomainEntity).toList();
+    }
+
+    @Override
+    public List<Document> loadDocuments(String title) {
+        List<DocumentJpaEntity> documentJpaEntities = documentRepository.findByTitleContainingIgnoreCase(title);
+        logger.debug("Found {} documents", documentJpaEntities.size());
         return documentJpaEntities.stream().map(documentMapper::mapToDomainEntity).toList();
     }
 

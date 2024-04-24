@@ -8,5 +8,7 @@ import java.util.Optional;
 public interface LoadDocumentPort {
     List<Document> loadDocuments();
 
+    List<Document> loadDocuments(String title);
+
     Optional<Document> loadDocument(Long documentId);
 }
