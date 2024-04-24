@@ -2,6 +2,8 @@ package com.nhantran.markdowneditor.documentservice.application.port.in;
 
 import com.nhantran.markdowneditor.documentservice.application.domain.model.Document;
 
+import java.util.Optional;
+
 public interface GetDocumentDetailUseCase {
-    Document getDocumentDetail(String documentId);
+    Optional<Document> getDocumentDetail(Long documentId);
 }

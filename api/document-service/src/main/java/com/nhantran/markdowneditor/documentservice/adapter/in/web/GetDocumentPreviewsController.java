@@ -5,7 +5,6 @@ import com.nhantran.markdowneditor.documentservice.application.port.in.GetDocume
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -15,9 +14,9 @@ public class GetDocumentPreviewsController {
     public GetDocumentPreviewsController(GetDocumentPreviewsUseCase getDocumentPreviewsUseCase) {
         this.getDocumentPreviewsUseCase = getDocumentPreviewsUseCase;
     }
-    
-    @GetMapping("/documents")
+
+    @GetMapping("/documents/previews")
     public List<DocumentPreview> getDocumentPreviews() {
-        return Collections.emptyList();
+        return getDocumentPreviewsUseCase.getDocumentPreviews();
     }
 }

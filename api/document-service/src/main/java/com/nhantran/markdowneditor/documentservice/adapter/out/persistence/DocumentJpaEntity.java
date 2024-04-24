@@ -4,10 +4,10 @@ import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
-@Table(name = "Document")
+@Table(name = "`Document`")
 public class DocumentJpaEntity {
     @Id
     @GeneratedValue
@@ -24,12 +24,12 @@ public class DocumentJpaEntity {
     @CreatedDate
     @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp createdDate;
+    private Instant createdDate;
 
     @LastModifiedDate
     @Column(name = "modified_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp modifiedDate;
+    private Instant modifiedDate;
 
     public Long getId() {
         return id;
@@ -55,19 +55,19 @@ public class DocumentJpaEntity {
         this.content = content;
     }
 
-    public Timestamp getCreatedDate() {
+    public Instant getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Timestamp createdDate) {
+    public void setCreatedDate(Instant createdDate) {
         this.createdDate = createdDate;
     }
 
-    public Timestamp getModifiedDate() {
+    public Instant getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(Timestamp modifiedDate) {
+    public void setModifiedDate(Instant modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 

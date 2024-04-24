@@ -1,19 +1,27 @@
 package com.nhantran.markdowneditor.documentservice.application.domain.model;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 public class Document {
-    private long id;
+    private Long id;
     private String title;
-    private LocalDateTime createdDate;
-    private LocalDateTime modifiedDate;
+    private Instant createdDate;
+    private Instant modifiedDate;
     private String content;
 
-    public long getId() {
+    public Document(Long id, String title, Instant createdDate, Instant modifiedDate, String content) {
+        this.id = id;
+        this.title = title;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.content = content;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -25,19 +33,19 @@ public class Document {
         this.title = title;
     }
 
-    public LocalDateTime getCreatedDate() {
+    public Instant getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
+    public void setCreatedDate(Instant createdDate) {
         this.createdDate = createdDate;
     }
 
-    public LocalDateTime getModifiedDate() {
+    public Instant getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(LocalDateTime modifiedDate) {
+    public void setModifiedDate(Instant modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 
