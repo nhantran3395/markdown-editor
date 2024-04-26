@@ -25,7 +25,7 @@ class GetDocumentDetailControllerTests {
     private GetDocumentDetailUseCase getDocumentDetailUseCase;
 
     @Test
-    void givenDocumentId_whenGetDocumentDetail_thenReturnDocumentDetail() throws Exception {
+    void givenDocumentExists_whenGetDocumentDetail_thenReturnsDetail() throws Exception {
         Instant currentTime = Instant.now();
         Document document = new Document(1L, "default document", currentTime, currentTime, "this is a default document");
         given(getDocumentDetailUseCase.getDocumentDetail(1L)).willReturn(Optional.of(document));
@@ -42,7 +42,7 @@ class GetDocumentDetailControllerTests {
     }
 
     @Test
-    void givenNoneExistingDocumentId_whenGetDocumentDetail_thenReturnNotFound() throws Exception {
+    void givenDocumentDoesNotExist_whenGetDocumentDetail_thenReturnNotFound() throws Exception {
         given(getDocumentDetailUseCase.getDocumentDetail(1L)).willReturn(Optional.empty());
 
         mockMvc.perform(

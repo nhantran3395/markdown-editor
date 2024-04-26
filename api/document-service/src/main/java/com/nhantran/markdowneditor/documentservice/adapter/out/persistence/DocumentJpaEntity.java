@@ -17,7 +17,7 @@ public class DocumentJpaEntity {
     @Column(nullable = false, unique = true)
     private String title;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(referencedColumnName = "document_content_id", name = "document_content_id")
     private DocumentContentJpaEntity content;
 

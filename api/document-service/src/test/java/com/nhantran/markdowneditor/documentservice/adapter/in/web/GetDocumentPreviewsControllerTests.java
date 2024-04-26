@@ -27,7 +27,7 @@ class GetDocumentPreviewsControllerTests {
     private GetDocumentPreviewsUseCase getDocumentPreviewsUseCase;
 
     @Test
-    void returnsDocumentPreviews() throws Exception {
+    void whenFindAll_thenReturnsListOfDocumentPreviews() throws Exception {
         Instant currentTime = Instant.now();
         DocumentPreview documentPreview1 = new DocumentPreview(1L, "default document", currentTime, currentTime);
         DocumentPreview documentPreview2 = new DocumentPreview(2L, "welcome", currentTime, currentTime);
@@ -52,7 +52,7 @@ class GetDocumentPreviewsControllerTests {
     }
 
     @Test
-    void givenDocumentWithMatchingTitleExists_whenFindByTitle_thenReturnsDocumentPreviews() throws Exception {
+    void givenDocumentsWithMatchingTitleExists_whenFindByTitle_thenReturnsListOfDocumentPreviews() throws Exception {
         Instant currentTime = Instant.now();
         String searchTerm = "default";
         DocumentPreview documentPreview = new DocumentPreview(1L, "default document", currentTime, currentTime);
@@ -74,7 +74,7 @@ class GetDocumentPreviewsControllerTests {
     }
 
     @Test
-    void givenDocumentWithMatchingTitleDoesNotExist_whenFindByTitle_thenReturnsEmptyList() throws Exception {
+    void givenNoDocumentWithMatchingTitle_whenFindByTitle_thenReturnsEmptyList() throws Exception {
         Instant currentTime = Instant.now();
         String searchTerm = "markdown";
         DocumentPreview documentPreview = new DocumentPreview(1L, "default document", currentTime, currentTime);
