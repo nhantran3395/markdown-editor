@@ -11,6 +11,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -46,6 +47,21 @@ class DocumentPersistenceAdapterTests {
     void givenNoDocumentWithMatchingTitle_whenFindByTitle_thenReturnEmptyList() {
         List<Document> documents = documentPersistenceAdapter.loadDocuments("markdown");
         assertThat(documents).isEmpty();
+    }
+
+    @Test
+    void givenDocumentExists_whenLoadDocument_thenReturnsDocument() {
+        Optional<Document> document = documentPersistenceAdapter.loadDocument(1L);
+        assertThat(document).isPresent();
+        assertThat(document.get().getId()).isEqualTo(1L);
+        assertThat(document.get().getTitle()).isEqualTo("default document");
+        assertThat(document.get().getContent()).isEqualTo("this is a default Markdown document");
+    }
+
+    @Test
+    void givenDocumentExists_whenLoadDocument_thenReturnsEmptyOptional() {
+        Optional<Document> document = documentPersistenceAdapter.loadDocument(3L);
+        assertThat(document).isEmpty();
     }
 
     @Test
