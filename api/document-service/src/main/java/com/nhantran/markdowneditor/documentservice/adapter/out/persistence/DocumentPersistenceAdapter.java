@@ -42,4 +42,22 @@ public class DocumentPersistenceAdapter implements LoadDocumentPort, CreateUpdat
     public Optional<Document> loadDocument(Long documentId) {
         return documentRepository.findById(documentId).stream().map(documentMapper::mapToDomainEntity).findFirst();
     }
+
+    @Override
+    public Long createDocument(Document document) {
+        DocumentContentJpaEntity contentEntity = new DocumentContentJpaEntity(
+                null,
+                document.getContent().getBytes(),
+                null,
+                null
+        );
+        DocumentJpaEntity documentEntity = new DocumentJpaEntity(
+                null,
+                document.getTitle(),
+                contentEntity,
+                null,
+                null
+        );
+        return documentRepository.save(documentEntity).getId();
+    }
 }

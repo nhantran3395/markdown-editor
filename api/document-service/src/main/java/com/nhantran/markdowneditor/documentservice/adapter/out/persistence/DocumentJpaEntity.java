@@ -3,15 +3,17 @@ package com.nhantran.markdowneditor.documentservice.adapter.out.persistence;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "`Document`")
 public class DocumentJpaEntity {
     @Id
-    @GeneratedValue
     @Column(name = "document_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true)
@@ -30,6 +32,17 @@ public class DocumentJpaEntity {
     @Column(name = "modified_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Instant modifiedDate;
+
+    public DocumentJpaEntity(Long id, String title, DocumentContentJpaEntity content, Instant createdDate, Instant modifiedDate) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+    }
+
+    public DocumentJpaEntity() {
+    }
 
     public Long getId() {
         return id;
