@@ -47,7 +47,7 @@ public class DocumentPersistenceAdapter implements LoadDocumentPort, CreateUpdat
     public Long createDocument(Document document) {
         DocumentContentJpaEntity contentEntity = new DocumentContentJpaEntity(
                 null,
-                document.getContent().getBytes(),
+                document.getContent() != null ? document.getContent().getBytes() : null,
                 null,
                 null
         );

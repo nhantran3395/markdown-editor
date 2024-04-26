@@ -6,11 +6,14 @@ import com.nhantran.markdowneditor.documentservice.application.domain.model.Docu
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest(classes = {TestContainersConfiguration.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @TestPropertySource(locations = "classpath:application-test.properties")
@@ -43,5 +46,63 @@ class DocumentPersistenceAdapterTests {
     void givenNoDocumentWithMatchingTitle_whenFindByTitle_thenReturnEmptyList() {
         List<Document> documents = documentPersistenceAdapter.loadDocuments("markdown");
         assertThat(documents).isEmpty();
+    }
+
+    @Test
+    @DirtiesContext
+    void givenTitleAndContent_whenCreateDocument_thenReturnsDocumentId() {
+        Document document = new Document(
+                null,
+                "sample document",
+                null,
+                null,
+                "this is a sample markdown document"
+        );
+        assertThat(documentPersistenceAdapter.createDocument(document)).isEqualTo(3L);
+    }
+
+    @Test
+    @DirtiesContext
+    void givenMissingContent_whenCreateDocument_thenReturnsDocumentId() {
+        Document document = new Document(
+                null,
+                "sample document",
+                null,
+                null,
+                null
+        );
+        assertThat(documentPersistenceAdapter.createDocument(document)).isEqualTo(3L);
+    }
+
+    @Test
+    @DirtiesContext
+    void givenMissingTitle_whenCreateDocument_thenThrowsException() {
+        Document document = new Document(
+                null,
+                null,
+                null,
+                null,
+                "this is a sample markdown document"
+        );
+
+        assertThrows(DataIntegrityViolationException.class, () -> {
+            documentPersistenceAdapter.createDocument(document);
+        });
+    }
+
+    @Test
+    @DirtiesContext
+    void givenMissingBothTitleAndContent_whenCreateDocument_thenThrowsException() {
+        Document document = new Document(
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+
+        assertThrows(DataIntegrityViolationException.class, () -> {
+            documentPersistenceAdapter.createDocument(document);
+        });
     }
 }
