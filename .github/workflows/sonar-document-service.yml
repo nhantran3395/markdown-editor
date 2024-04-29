@@ -1,9 +1,16 @@
 name: Sonar Document Service
 on:
   push:
+    paths:
+      - 'api/document-service/**'
+      - '.github/workflows/**'
     branches:
       - develop
+      - main
   pull_request:
+    paths:
+      - 'api/document-service/**'
+      - '.github/workflows/**'
     types: [ opened, synchronize, reopened ]
 jobs:
   build:

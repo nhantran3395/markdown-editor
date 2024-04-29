@@ -1,9 +1,16 @@
 name: Sonar Web Client
 on:
   push:
+    paths:
+      - 'client/**'
+      - '.github/workflows/**'
     branches:
       - develop
+      - main
   pull_request:
+    paths:
+      - 'client/**'
+      - '.github/workflows/**'
     types: [ opened, synchronize, reopened ]
 jobs:
   sonarcloud:
