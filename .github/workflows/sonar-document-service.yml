@@ -40,8 +40,14 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+      - name: Create local profile
+        with:
+          IDENTITY_POOL_URL: ${{ secrets.IDENTITY_POOL_URL }}
+        run: |
+          echo spring.security.oauth2.resourceserver.jwt.issuer-uri="$IDENTITY_POOL_URL" > ./application-ci.properties
+          echo spring.security.oauth2.resourceserver.jwt.jwk-set-uri="$IDENTITY_POOL_URL/.well-known/jwks.json" > ./application-ci.properties
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_DOCUMENT_SERVICE }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=com.nhantran.markdowneditor:document-service -Pcoverage
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=com.nhantran.markdowneditor:document-service -Pcoverage -Dspring.profiles.active=ci
