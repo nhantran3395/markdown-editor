@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.BDDMockito.given;
@@ -25,11 +26,24 @@ class CreateDocumentControllerTests {
     CreateDocumentUseCase createDocumentUseCase;
 
     @Test
+    void givenAccessTokenNotProvided_whenCreateDocument_thenReturnsUnauthorized() throws Exception {
+        CreateDocumentCommand command = new CreateDocumentCommand("sample", "sample document");
+
+        mockMvc.perform(
+                post("/documents/1")
+                        .with(SecurityMockMvcRequestPostProcessors.csrf())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(command))
+        ).andExpect(status().isUnauthorized());
+    }
+
+    @Test
     void givenMissingTitle_whenCreateDocument_thenReturnsBadRequest() throws Exception {
         CreateDocumentCommand command = new CreateDocumentCommand(null, "sample document");
 
         mockMvc.perform(
                         post("/documents")
+                                .with(SecurityMockMvcRequestPostProcessors.jwt())
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(asJsonString(command))
                 )
@@ -44,6 +58,7 @@ class CreateDocumentControllerTests {
 
         mockMvc.perform(
                         post("/documents")
+                                .with(SecurityMockMvcRequestPostProcessors.jwt())
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(asJsonString(command))
                 )
@@ -59,6 +74,7 @@ class CreateDocumentControllerTests {
 
         mockMvc.perform(
                         post("/documents")
+                                .with(SecurityMockMvcRequestPostProcessors.jwt())
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(asJsonString(command))
                 )
@@ -73,6 +89,7 @@ class CreateDocumentControllerTests {
 
         mockMvc.perform(
                         post("/documents")
+                                .with(SecurityMockMvcRequestPostProcessors.jwt())
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(asJsonString(command))
                 )
@@ -85,8 +102,7 @@ class CreateDocumentControllerTests {
     protected static String asJsonString(final Object obj) {
         try {
             final ObjectMapper mapper = new ObjectMapper();
-            final String jsonContent = mapper.writeValueAsString(obj);
-            return jsonContent;
+            return mapper.writeValueAsString(obj);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
