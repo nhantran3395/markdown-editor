@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.Instant;
@@ -27,6 +28,13 @@ class GetDocumentPreviewsControllerTests {
     private GetDocumentPreviewsUseCase getDocumentPreviewsUseCase;
 
     @Test
+    void givenAccessTokenNotProvided_whenGetDocumentPreviews_thenReturnsUnauthorized() throws Exception {
+        mockMvc.perform(
+                get("/documents/previews")
+        ).andExpect(status().isUnauthorized());
+    }
+
+    @Test
     void whenFindAll_thenReturnsListOfDocumentPreviews() throws Exception {
         Instant currentTime = Instant.now();
         DocumentPreview documentPreview1 = new DocumentPreview(1L, "default document", currentTime, currentTime);
@@ -35,6 +43,7 @@ class GetDocumentPreviewsControllerTests {
 
         mockMvc.perform(
                         get("/documents/previews")
+                                .with(SecurityMockMvcRequestPostProcessors.jwt())
                                 .accept("application/json")
                 ).andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
@@ -61,6 +70,7 @@ class GetDocumentPreviewsControllerTests {
 
         mockMvc.perform(
                         get("/documents/previews?title=" + searchTerm)
+                                .with(SecurityMockMvcRequestPostProcessors.jwt())
                                 .accept("application/json")
                 ).andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
@@ -83,6 +93,7 @@ class GetDocumentPreviewsControllerTests {
 
         mockMvc.perform(
                 get("/documents/previews?title=" + searchTerm)
+                        .with(SecurityMockMvcRequestPostProcessors.jwt())
                         .accept("application/json")
         ).andExpect(status().isOk());
 
