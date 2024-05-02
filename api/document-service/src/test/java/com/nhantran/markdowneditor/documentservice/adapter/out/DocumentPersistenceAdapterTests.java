@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 
 import java.util.List;
@@ -17,9 +16,8 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SpringBootTest(classes = {TestContainersConfiguration.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest(classes = {TestContainersConfiguration.class})
 @TestPropertySource(locations = "classpath:application-test.properties")
-@ActiveProfiles(profiles = {"persistence_test"})
 class DocumentPersistenceAdapterTests {
     @Autowired
     private DocumentPersistenceAdapter documentPersistenceAdapter;
